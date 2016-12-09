@@ -127,6 +127,7 @@ func deleteCommonHeaders(call *models.ApiCall) {
 	delete(call.RequestHeader, "Cache-Control")
 	delete(call.RequestHeader, "Connection")
 	// delete(call.RequestHeader, "Cookie")
+	delete(call.RequestHeader, "Postman-Token")
 	delete(call.RequestHeader, "Origin")
 	delete(call.RequestHeader, "User-Agent")
 }
