@@ -11,7 +11,7 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/betacraft/yaag/yaag/models"
+	"github.com/masato25/yaag/yaag/models"
 )
 
 var count int
@@ -126,7 +126,7 @@ func deleteCommonHeaders(call *models.ApiCall) {
 	delete(call.RequestHeader, "Accept-Language")
 	delete(call.RequestHeader, "Cache-Control")
 	delete(call.RequestHeader, "Connection")
-	delete(call.RequestHeader, "Cookie")
+	// delete(call.RequestHeader, "Cookie")
 	delete(call.RequestHeader, "Origin")
 	delete(call.RequestHeader, "User-Agent")
 }
