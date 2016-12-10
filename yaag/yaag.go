@@ -58,6 +58,8 @@ func GenerateHtml(apiCall *models.ApiCall) {
 					apiCall.ResponseCode == currentApiCall.ResponseCode &&
 					apiCall.ResponseBody == currentApiCall.ResponseBody {
 					avoid = true
+				} else if apiCall.ResponseCode == 404 {
+					avoid = true
 				}
 			}
 			if !avoid {
