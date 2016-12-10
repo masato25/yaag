@@ -5,10 +5,10 @@ import (
 	"net/http/httptest"
 	"strings"
 
+	"github.com/gin-gonic/gin"
 	"github.com/masato25/yaag/middleware"
 	"github.com/masato25/yaag/yaag"
 	"github.com/masato25/yaag/yaag/models"
-	"github.com/gin-gonic/gin"
 )
 
 func Document() gin.HandlerFunc {
@@ -23,7 +23,11 @@ func Document() gin.HandlerFunc {
 		if writer.Code != 404 {
 			apiCall.MethodType = c.Request.Method
 			apiCall.CurrentPath = strings.Split(c.Request.RequestURI, "?")[0]
-			apiCall.ResponseBody = ""
+			body := ""
+			if val, ok := c.Get("body_doc"); ok {
+				body = val.(string)
+			}
+			apiCall.ResponseBody = body
 			apiCall.ResponseCode = c.Writer.Status()
 			headers := map[string]string{}
 			for k, v := range c.Writer.Header() {
