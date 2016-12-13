@@ -1,9 +1,10 @@
 package gin
 
 import (
-	"log"
 	"net/http/httptest"
 	"strings"
+
+	log "github.com/Sirupsen/logrus"
 
 	"github.com/gin-gonic/gin"
 	"github.com/masato25/yaag/middleware"
@@ -35,6 +36,8 @@ func Document() gin.HandlerFunc {
 				headers[k] = strings.Join(v, " ")
 			}
 			apiCall.ResponseHeader = headers
+			//a custom api for fix broken header value
+			apiCall.RequestHeader["Apitoken"] = c.Request.Header.Get("Apitoken")
 			go yaag.GenerateHtml(&apiCall)
 		}
 	}
