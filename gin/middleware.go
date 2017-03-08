@@ -6,7 +6,7 @@ import (
 
 	log "github.com/Sirupsen/logrus"
 
-	"github.com/gin-gonic/gin"
+	"gopkg.in/gin-gonic/gin.v1"
 	"github.com/masato25/yaag/middleware"
 	"github.com/masato25/yaag/yaag"
 	"github.com/masato25/yaag/yaag/models"
